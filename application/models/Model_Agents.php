@@ -1,10 +1,13 @@
 <?php
-class Model_Agents extends CI_Model
-{
-    public function GetAllAgents(){
-        $sql1 = $this->db->query("select code from formation");
-         $sql = $this->db->query("select code from agent");
-       //lol
-       return $sql->result();
-    }
+class Model_Agent extends CI_Controller{
+    
+    
+  public function GetAllAgents($numeroFormation){
+       
+       
+      $sql = $this->db->query("SELECT prenom,nom FROM agent, inscription WHERE Agent.code = inscription.codeAgent and numeroFormation='".$numeroFormation."'");
+      return $sql->result();
+       
+   } 
+    
 }

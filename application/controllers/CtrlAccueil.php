@@ -1,35 +1,37 @@
 
 <?php
+class CtrlAccueil extends CI_Controller{
+ public function index(){
+     
+    $data['activite'] = "Les Activités";
+    $this->load->model("Model_Activite");
+    $data['lesActivites'] = $this->Model_Activite->GetAllActivite();
+    $this->load->view("v_activite", $data);
+     
+     
+ }   
+  public function AfficherLesFormations()
+    {
+   
+        $laActivite = $this->uri->segment(3);
+        $this->load->model("Model_Formation");
+        
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-class CtrlAccueil extends CI_Controller
-{
-    public function index(){
-       $this->load->model("Model_Activite"); 
-       $data["lesActivites"] = $this->Model_Activite->GetAllActivite();
+        $data['lesFormations'] = $this->Model_Formation->GetAllFormations($laActivite);
         
-        $this->load->view("v_activite",$data);
-    }
-    
-    public function afficherLesFormations(){
-   $lol= $this->uri->segment(3);
-    
-         $this->load->model("Model_Formation"); ;
-         
-         $data["lesFormation"] = $this->Model_Formation->GetAllFormations($lol);
-         $this->load->view("v_formation",$data);
-    }
-    public function afficherLesAgents(){
+ 
+        $this->load->view("v_formation", $data);
         
-       $lol= $this->uri->segment(4);
+    }
+    public function AfficherLesAgents()
+    {
+        
+
+        $codeFormation = $this->uri->segment(3);
+        $this->load->Model("Model_Agent");
+        $data['lesAgents'] = $this->Model_Agent->GetAllAgents($codeFormation);
+       
+        $this->load->view("v_agent",$data);
     
-         $this->load->model("Model_Agents"); ;
-         
-         $data["lesAgents"] = $this->Model_Agents->GetAllAgents($lol);
-         $this->load->view("v_agent",$data);
     }
 }

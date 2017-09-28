@@ -1,19 +1,16 @@
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
     <body>
-        <?php 
-        foreach($lesAgents as $ag){
-              ?>
-        <p><?php echo $ag  ?></p>
-        <br>
-       
-        <?php   
-        }
-        ?>  
-     
+    <h1>Les Agents</h1>
+
+<?php
+
+foreach ($lesAgents as $agent) {
+    ?>
+<a href="<?php echo base_url();?>index.php/CtrlAccueil/AfficherLesFormations/AfficherLesAgents/"<?php echo $agent->nom; ?>><?php echo $agent>prenom; ?></a><br>-->
+    <p><?php echo $agent->nom; ?>  -  <?php echo $agent->prenom; ?></p> 
+<?php    
+}
+?>
+<!-- test-->
     </body>
 </html>
