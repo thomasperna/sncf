@@ -28,8 +28,8 @@ class CtrlAccueil extends CI_Controller{
         
 
         $codeFormation = $this->uri->segment(3);
-        $this->load->Model("Model_Agent");
-        $data['lesAgents'] = $this->Model_Agent->GetAllAgents($codeFormation);
+        $this->load->Model("Model_Agents");
+        $data['lesAgents'] = $this->Model_Agents->GetAllAgents($codeFormation);
        
         $this->load->view("v_agent",$data);
     

@@ -1,5 +1,5 @@
 <?php
-class Model_Agent extends CI_Controller{
+class Model_Agents extends CI_Controller{
     
     
   public function GetAllAgents($numeroFormation){
